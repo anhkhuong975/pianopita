@@ -173,6 +173,22 @@ h1 {
   display: none;
 }
 
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.site-footer {
+  margin-top: 36px;
+  font-size: 0.82rem;
+  color: #555;
+}
+
+.site-footer a {
+  color: #777;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #e8c56e;
+}
+
 /* ── Language switcher ───────────────────────────────────────────────────── */
 .lang-switch {
   position: fixed;
