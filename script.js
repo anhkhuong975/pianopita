@@ -17,7 +17,24 @@ const NOTES = {
   'F5': { y: 30 },   // 5th line (top)
 };
 
-const VN = { C: 'Đô', D: 'Rê', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si' };
+const LANG = document.documentElement.lang.startsWith('en') ? 'en' : 'vi';
+
+const i18n = {
+  vi: {
+    noteNames:   { C: 'Đô', D: 'Rê', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si' },
+    octaveLabel: 'quãng',
+    msgCorrect:  'Đúng rồi!',
+    msgWrong:    'Sai! Đáp án đúng được tô màu xanh.',
+  },
+  en: {
+    noteNames:   { C: 'C (Do)', D: 'D (Re)', E: 'E (Mi)', F: 'F (Fa)', G: 'G (Sol)', A: 'A (La)', B: 'B (Si)' },
+    octaveLabel: 'octave',
+    msgCorrect:  'Correct!',
+    msgWrong:    'Wrong! The correct key is highlighted in blue.',
+  },
+};
+
+const T = i18n[LANG];;
 const NOTE_X = 220;   // x position of note head in SVG
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -141,19 +158,19 @@ function handleClick(note) {
   if (note === currentNote) {
     scoreCorrect++;
     clickedKey.classList.add('key-correct');
-    feedbackEl.textContent = 'Đúng rồi!';
+    feedbackEl.textContent = T.msgCorrect;
     feedbackEl.className = 'feedback msg-correct';
   } else {
     scoreWrong++;
     clickedKey.classList.add('key-wrong');
     correctKey.classList.add('key-show');
-    feedbackEl.textContent = 'Sai! Đáp án đúng được tô màu xanh.';
+    feedbackEl.textContent = T.msgWrong;
     feedbackEl.className = 'feedback msg-wrong';
   }
 
   const octave = currentNote.slice(1);
   const letter = currentNote[0];
-  answerEl.textContent = `${currentNote}  —  ${VN[letter]} (quãng ${octave})`;
+  answerEl.textContent = `${currentNote}  —  ${T.noteNames[letter]} (${T.octaveLabel} ${octave})`;
   answerEl.classList.remove('hidden');
 
   document.getElementById('score-correct').textContent = scoreCorrect;
