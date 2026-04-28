@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pianobita - Luyện Nốt Nhạc</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Pianobita</h1>
+  <p class="subtitle">Nhìn nốt trên khung nhạc &rarr; Bấm đúng phím đàn piano</p>
+  <p class="range-info">Phạm vi: Đô4 (C4) đến Fa5 (F5) &mdash; khóa Sol, nốt tự nhiên</p>
+
+  <div class="scoreboard">
+    <span class="sc sc-correct">Đúng: <b id="score-correct">0</b></span>
+    <span class="sc sc-wrong">Sai: <b id="score-wrong">0</b></span>
+    <span class="sc sc-total">Tổng: <b id="score-total">0</b></span>
+  </div>
+
+  <div class="game">
+
+    <div class="staff-box">
+      <svg id="staff-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 130" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <div id="answer" class="answer hidden">&nbsp;</div>
+    <div id="feedback" class="feedback">&nbsp;</div>
+
+    <div class="piano-scroll">
+      <div id="piano" class="piano"></div>
+    </div>
+
+    <button id="next-btn" class="next-btn hidden" onclick="nextQuestion()">Câu tiếp theo &rarr;</button>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
